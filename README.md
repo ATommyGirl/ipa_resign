@@ -23,3 +23,19 @@ or
 ```sh
 sh ios_app_signature_tool.sh -s /Users/tommy/Desktop/your-PP-folder -v '1.0.4' -b '20' old_ipa_1.0.3.ipa
 ```
+
+##Error
+
+我的 Mac 系统更新以后，使用 Base64 命令会报错，修改了一下参数
+```sh
+base64: invalid argument -Dd
+Usage:	base64 [-hDd] [-b num] [-i in_file] [-o out_file]
+  -h, --help     display this message
+  -Dd, --decode   decodes input
+  -b, --break    break encoded string into num character lines
+  -i, --input    input file (default: "-" for stdin)
+  -o, --output   output file (default: "-" for stdout)
+unable to load certificate
+```
+-Dd 改为了 --decode
+
