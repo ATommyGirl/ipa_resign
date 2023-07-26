@@ -399,17 +399,17 @@ certificate_info() {
 
     # 起始有效期
     local cert_start_date
-    cert_start_date=$(echo $dev_cer0 | base64 -Dd | openssl x509 -inform der -noout -startdate | sed -r 's/notBefore=(.*)/\1/g')
+    cert_start_date=$(echo $dev_cer0 | base64 --decode | openssl x509 -inform der -noout -startdate | sed -r 's/notBefore=(.*)/\1/g')
     echo Not Before: ^$cert_start_date
 
     # 结束有效期
     local cert_end_date
-    cert_end_date=$(echo $dev_cer0 | base64 -Dd | openssl x509 -inform der -noout -enddate | sed -r 's/notAfter=(.*)/\1/g')
+    cert_end_date=$(echo $dev_cer0 | base64 --decode | openssl x509 -inform der -noout -enddate | sed -r 's/notAfter=(.*)/\1/g')
     echo Not After: ^$cert_end_date
 
     # 主题
     local cert_subject
-    cert_subject=$(echo $dev_cer0 | base64 -Dd | openssl x509 -inform der -noout -subject)
+    cert_subject=$(echo $dev_cer0 | base64 --decode | openssl x509 -inform der -noout -subject)
 
     # 从 主题 中提取 UID
     local cert_uid
